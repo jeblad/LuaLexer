@@ -1,0 +1,33 @@
+{
+	"name": "LuaLexer",
+	"version": "0.1.0",
+	"author": [
+		"John Erling Blad"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:LuaLexer",
+	"descriptionmsg": "lualexer-desc",
+	"license-name": "GPL-2.0",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.33",
+		"extensions": {
+			"Scribunto": "*"
+		}
+	},
+	"AutoloadClasses": {
+		"LuaLexer\\Hooks":
+			"includes/Hooks.php"
+	},
+	"callback": "LuaLexer\\Hooks::onExtensionSetup",
+	"Hooks": {
+		"ScribuntoExternalLibraryPaths": [
+			"LuaLexer\\Hooks::onRegisterScribuntoExternalLibraryPaths"
+		]
+	},
+	"MessagesDirs": {
+		"LuaLexer": [
+			"i18n"
+		]
+	},
+	"manifest_version": 2
+}
