@@ -1,3 +1,6 @@
 [submodule "topics"]
 	path = topics
 	url = https://github.com/jeblad/LuaLexer.wiki.git
+[submodule "includes/LuaLibrary/lua/lua-lexer"]
+	path = includes/LuaLibrary/lua/lua-lexer
+	url = https://github.com/LoganDark/lua-lexer.git
