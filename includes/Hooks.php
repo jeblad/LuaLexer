@@ -38,7 +38,7 @@ class Hooks {
 		}
 
 		// Path containing pure Lua libraries that don't need to interact with PHP
-		$extraLibraryPaths[] = __DIR__ . '/LuaLibrary/lua/pure';
+		$extraLibraryPaths[] = __DIR__ . '/LuaLibrary/lua';
 
 		return true;
 	}
