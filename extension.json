@@ -2,7 +2,8 @@
 	"name": "LuaLexer",
 	"version": "0.1.0",
 	"author": [
-		"John Erling Blad"
+		"John Erling Blad",
+		"[https://github.com/LoganDark/lua-lexer authors of lua-lexer]"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:LuaLexer",
 	"descriptionmsg": "lualexer-desc",
