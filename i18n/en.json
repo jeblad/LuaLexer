@@ -1,0 +1,9 @@
+
+{
+	"@metadata": {
+		"authors": [
+			"Jeblad"
+		]
+	},
+	"lualexer-desc": "Provides lexing of Lua modules"
+}
