@@ -1,1 +1,0 @@
-/home/john/spaces/LuaLexer2/mediawiki/extensions/LuaLexer/lua-lexer/lexer.lua
