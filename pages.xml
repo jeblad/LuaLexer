@@ -1,0 +1,105 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="en">
+  <siteinfo>
+    <sitename>devwiki</sitename>
+    <dbname>wiki</dbname>
+    <base>http://dev.wiki.local.wmftest.net:8080/wiki/Main_Page</base>
+    <generator>MediaWiki 1.35.0-alpha</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wiki</namespace>
+      <namespace key="5" case="first-letter">Wiki talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Module:Test1</title>
+    <ns>828</ns>
+    <id>4</id>
+    <revision>
+      <id>13</id>
+      <timestamp>2020-05-10T12:30:09Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with "-- comment"</comment>
+      <origin>13</origin>
+      <model>Scribunto</model>
+      <format>text/plain</format>
+      <text bytes="10" sha1="aoypy60jjqd2bg8lsgafoixhg8kxpi0" xml:space="preserve">-- comment</text>
+      <sha1>aoypy60jjqd2bg8lsgafoixhg8kxpi0</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Test2</title>
+    <ns>828</ns>
+    <id>5</id>
+    <revision>
+      <id>16</id>
+      <parentid>14</parentid>
+      <timestamp>2020-05-10T12:40:14Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <origin>16</origin>
+      <model>Scribunto</model>
+      <format>text/plain</format>
+      <text bytes="42" sha1="i8h1tpnr7jwyat6q4eg76zjp46vzhby" xml:space="preserve">-- comment
+function foo( s )
+	return s
+end</text>
+      <sha1>i8h1tpnr7jwyat6q4eg76zjp46vzhby</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Test3</title>
+    <ns>828</ns>
+    <id>6</id>
+    <revision>
+      <id>15</id>
+      <timestamp>2020-05-10T12:39:38Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with "local h = {}  -- comment function h.foo( s ) 	return s == 'foo' end  -- comment function h.bar( s ) 	return s == 'bar' end  -- comment function h.baz( s ) 	return s == 'baz' e..."</comment>
+      <origin>15</origin>
+      <model>Scribunto</model>
+      <format>text/plain</format>
+      <text bytes="187" sha1="of55umdn346272o1nvsqet5ewxdot7a" xml:space="preserve">local h = {}
+
+-- comment
+function h.foo( s )
+	return s == 'foo'
+end
+
+-- comment
+function h.bar( s )
+	return s == 'bar'
+end
+
+-- comment
+function h.baz( s )
+	return s == 'baz'
+end
+
+return h</text>
+      <sha1>of55umdn346272o1nvsqet5ewxdot7a</sha1>
+    </revision>
+  </page>
+</mediawiki>
