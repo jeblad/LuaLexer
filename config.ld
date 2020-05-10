@@ -9,17 +9,17 @@ dir = 'docs'
 
 readme = {
 	-- 'topics/lualexer.md',
-	'topics/introduction.md',
+	-- 'topics/introduction.md',
 	'topics/vagrant.md',
 	-- 'topics/databases.md',
 	-- 'topics/delayed.md',
 	-- 'topics/hello-world.md',
 	-- 'topics/translatewiki.md',
-	'topics/vscode.md',
+	-- 'topics/vscode.md',
 	'CONTRIBUTING.md',
 	'CODE_OF_CONDUCT.md',
 	'SECURITY.md',
-	'TRANSLATING.md'
+	-- 'TRANSLATING.md'
 }
 
 examples = {
