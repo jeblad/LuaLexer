@@ -9,7 +9,7 @@ dir = 'docs'
 
 readme = {
 	-- 'topics/lualexer.md',
-	-- 'topics/introduction.md',
+	'topics/introduction.md',
 	'topics/vagrant.md',
 	-- 'topics/databases.md',
 	-- 'topics/delayed.md',
