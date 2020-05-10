@@ -1,0 +1,1 @@
+mw.lexer( 'Module:Test' )
