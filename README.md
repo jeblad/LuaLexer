@@ -3,7 +3,7 @@
 
  ***NOTE***: *This is only in the preparation. The goal is to insert [LoganDark/lua-lexer](https://github.com/LoganDark/lua-lexer) and make it avaiulable.*
 
-This [extension for Mediawiki](https://www.mediawiki.org/wiki/Extension:ModDoc) add a Lus lexer for modules provided by the [Scribunto extension](https://www.mediawiki.org/wiki/Extension:Scribunto). This makes it possible to build a parse tree for Lua code, to facilitate further analyzis in a collaborative environment.
+This [extension for Mediawiki](https://www.mediawiki.org/wiki/Extension:ModDoc) add a Lua lexer for modules provided by the [Scribunto extension](https://www.mediawiki.org/wiki/Extension:Scribunto). This makes it possible to build parse tree for Lua code, to facilitate further [lexical analysis](https://en.wikipedia.org/wiki/Lexical_analysis) in a collaborative environment.
 
 ## Usage
 
