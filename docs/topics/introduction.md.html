@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>LuaLexer documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>LuaLexer</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Usage">Usage </a></li>
+<li><a href="#Example">Example </a></li>
+</ul>
+
+
+<h2>Topics</h2>
+<ul class="">
+  <li><strong>Introduction</strong></li>
+  <li><a href="../topics/vagrant.md.html">Vagrant</a></li>
+  <li><a href="../topics/CONTRIBUTING.md.html">Contributing</a></li>
+  <li><a href="../topics/CODE_OF_CONDUCT.md.html">Code of Conduct</a></li>
+  <li><a href="../topics/SECURITY.md.html">Security</a></li>
+  <li><a href="../topics/TRANSLATING.md.html">Translating</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/simple.lua.html">simple.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>Introduction</h1>
+
+<p><a name="Usage"></a></p>
+<h2>Usage</h2>
+
+<p>Usage call for a single module, provided as <code>Module:Simple</code>, would be like this</p>
+
+
+<pre>
+mw.lexer( <span class="string">'Module:Test'</span> )
+</pre>
+
+<p>Given that the page is recognized as a module containing code the lexer can parse, that is it has the correct content model, it will build a table containing a table entry for each line in the source file. Each found token will be added in the order they are found.</p>
+
+<p>Each token has the following structure:</p>
+
+
+<pre>
+{
+  <span class="global">type</span> = <span class="global">string</span>, <span class="comment">-- one of the token types below
+</span>  data = <span class="global">string</span>, <span class="comment">-- the source code that makes up the token
+</span>  posFirst = number, <span class="comment">-- the position (inclusive) within that line that the token starts
+</span>  posLast = number <span class="comment">-- the position (inclusive) within that line that the token ends
+</span>}
+</pre>
+
+
+<p>Each token can have one of the following types:</p>
+
+<ul>
+    <li><code>whitespace</code>: Spaces, newlines, tabs, and carriage returns</li>
+    <li><code>comment</code>: Either multi-line or single-line comments</li>
+    <li><code>string_start</code> and <code>string_end</code>: starts and ends of a string. There will be no non-string tokens between these two.</li>
+    <li><a href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a>: Part of a string that isn't an escape</li>
+    <li><code>escape</code>: A string escape, like \n, only found inside strings</li>
+    <li><code>keyword</code>: Keywords. Like "while", "end", "do", etc</li>
+    <li><code>value</code>: Special values. Only true, false, and nil</li>
+    <li><code>ident</code>: Identifier. Variables, function names, etc</li>
+    <li><code>number</code>: Numbers, including both base 10 (and scientific notation) and hexadecimal</li>
+    <li><code>symbol</code>: Symbols, like brackets, parenthesis, ., .., etc</li>
+    <li><code>vararg</code>: <code>...</code></li>
+    <li><code>operator</code>: Operators, like <code>+</code>, <code>-</code>, <code>%</code>, <code>=</code>, <code>==</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>~=</code>, etc</li>
+    <li><code>label_start</code> and <code>label_end</code>: The starts and ends of labels. Always equal to <code>&apos;::&apos;</code>. Between them there can only be <code>whitespace</code> and <code>label</code> tokens.</li>
+    <li><code>label</code>: Basically an <code>ident</code> between a <code>label_start</code> and <code>label_end</code>.</li>
+    <li><code>unidentified</code>: Anything that isn't one of the above tokens. Consider them errors. Invalid escapes are also unidentified.</li>
+</ul>
+
+<p><a name="Example"></a></p>
+<h2>Example</h2>
+
+<p>For the following Lua code, provided as <code>Module:Test</code>:</p>
+
+
+<pre>
+<span class="comment">-- comment
+</span><span class="keyword">function</span> foo()
+    <span class="keyword">return</span> <span class="string">'bar'</span>
+<span class="keyword">end</span>
+</pre>
+
+
+<p>This is what you get when you put it through the lexer:</p>
+
+
+<pre>
+{
+  {
+    {
+      [<span class="string">"data"</span>] = <span class="string">"-- comment"</span>,
+      [<span class="string">"posFirst"</span>] = <span class="number">1</span>,
+      [<span class="string">"posLast"</span>] = <span class="number">10</span>,
+      [<span class="string">"type"</span>] = <span class="string">"comment"</span>,
+    },
+  },
+  {
+    {
+      [<span class="string">"data"</span>] = <span class="string">"function"</span>,
+      [<span class="string">"posFirst"</span>] = <span class="number">1</span>,
+      [<span class="string">"posLast"</span>] = <span class="number">8</span>,
+      [<span class="string">"type"</span>] = <span class="string">"keyword"</span>,
+    },
+    {
+      [<span class="string">"data"</span>] = <span class="string">" "</span>,
+      [<span class="string">"posFirst"</span>] = <span class="number">9</span>,
+      [<span class="string">"posLast"</span>] = <span class="number">9</span>,
+      [<span class="string">"type"</span>] = <span class="string">"whitespace"</span>,
+    },
+    {
+      [<span class="string">"data"</span>] = <span class="string">"foo"</span>,
+      [<span class="string">"posFirst"</span>] = <span class="number">10</span>,
+      [<span class="string">"posLast"</span>] = <span class="number">12</span>,
+      [<span class="string">"type"</span>] = <span class="string">"ident"</span>,
+    },
+    {
+      [<span class="string">"data"</span>] = <span class="string">"()"</span>,
+      [<span class="string">"posFirst"</span>] = <span class="number">13</span>,
+      [<span class="string">"posLast"</span>] = <span class="number">14</span>,
+      [<span class="string">"type"</span>] = <span class="string">"symbol"</span>,
+    },
+  },
+  {
+    {
+      [<span class="string">"data"</span>] = <span class="string">" "</span>,
+      [<span class="string">"posFirst"</span>] = <span class="number">1</span>,
+      [<span class="string">"posLast"</span>] = <span class="number">1</span>,
+      [<span class="string">"type"</span>] = <span class="string">"whitespace"</span>,
+    },
+    {
+      [<span class="string">"data"</span>] = <span class="string">"return"</span>,
+      [<span class="string">"posFirst"</span>] = <span class="number">2</span>,
+      [<span class="string">"posLast"</span>] = <span class="number">7</span>,
+      [<span class="string">"type"</span>] = <span class="string">"keyword"</span>,
+    },
+    {
+      [<span class="string">"data"</span>] = <span class="string">" "</span>,
+      [<span class="string">"posFirst"</span>] = <span class="number">8</span>,
+      [<span class="string">"posLast"</span>] = <span class="number">8</span>,
+      [<span class="string">"type"</span>] = <span class="string">"whitespace"</span>,
+    },
+    {
+      [<span class="string">"data"</span>] = <span class="string">"'"</span>,
+      [<span class="string">"posFirst"</span>] = <span class="number">9</span>,
+      [<span class="string">"posLast"</span>] = <span class="number">9</span>,
+      [<span class="string">"type"</span>] = <span class="string">"string_start"</span>,
+    },
+    {
+      [<span class="string">"data"</span>] = <span class="string">"bar"</span>,
+      [<span class="string">"posFirst"</span>] = <span class="number">10</span>,
+      [<span class="string">"posLast"</span>] = <span class="number">12</span>,
+      [<span class="string">"type"</span>] = <span class="string">"string"</span>,
+    },
+    {
+      [<span class="string">"data"</span>] = <span class="string">"'"</span>,
+      [<span class="string">"posFirst"</span>] = <span class="number">13</span>,
+      [<span class="string">"posLast"</span>] = <span class="number">13</span>,
+      [<span class="string">"type"</span>] = <span class="string">"string_end"</span>,
+    },
+  },
+  {
+    {
+      [<span class="string">"data"</span>] = <span class="string">"end"</span>,
+      [<span class="string">"posFirst"</span>] = <span class="number">1</span>,
+      [<span class="string">"posLast"</span>] = <span class="number">3</span>,
+      [<span class="string">"type"</span>] = <span class="string">"keyword"</span>,
+    },
+  },
+}
+</pre>
+
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc TESTING</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-138139619-1"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+
+	gtag('js', new Date());
+	gtag('config', 'UA-138139619-1');
+</script>
+
+</body>
+</html>
+
