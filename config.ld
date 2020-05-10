@@ -19,7 +19,7 @@ readme = {
 	'CONTRIBUTING.md',
 	'CODE_OF_CONDUCT.md',
 	'SECURITY.md',
-	-- 'TRANSLATING.md'
+	'TRANSLATING.md'
 }
 
 examples = {
