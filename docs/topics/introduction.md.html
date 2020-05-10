@@ -48,7 +48,10 @@
 </ul>
 <h2>Examples</h2>
 <ul class="nowrap">
-  <li><a href="../examples/simple.lua.html">simple.lua</a></li>
+  <li><a href="../examples/call.lua.html">call.lua</a></li>
+  <li><a href="../examples/test1.lua.html">test1.lua</a></li>
+  <li><a href="../examples/test2.lua.html">test2.lua</a></li>
+  <li><a href="../examples/test3.lua.html">test3.lua</a></li>
 </ul>
 
 </div>
@@ -61,11 +64,11 @@
 <p><a name="Usage"></a></p>
 <h2>Usage</h2>
 
-<p>Usage call for a single module, provided as <code>Module:Simple</code>, would be like this</p>
+<p>Usage call for a single module, provided as <code>Module:Call</code> (or <a href="call.lua">call.lua</a>), would be like this</p>
 
 
 <pre>
-mw.lexer( <span class="string">'Module:Test'</span> )
+mw.lexPage( <span class="string">'Module:Test'</span> )
 </pre>
 
 <p>Given that the page is recognized as a module containing code the lexer can parse, that is it has the correct content model, it will build a table containing a table entry for each line in the source file. Each found token will be added in the order they are found.</p>
@@ -106,14 +109,11 @@ mw.lexer( <span class="string">'Module:Test'</span> )
 <p><a name="Example"></a></p>
 <h2>Example</h2>
 
-<p>For the following Lua code, provided as <code>Module:Test</code>:</p>
+<p>For the following Lua code, provided as <code>Module:Test1</code> (or <a href="test1.lua">test1.lua</a>):</p>
 
 
 <pre>
-<span class="comment">-- comment
-</span><span class="keyword">function</span> foo()
-    <span class="keyword">return</span> <span class="string">'bar'</span>
-<span class="keyword">end</span>
+<span class="comment">-- comment</span>
 </pre>
 
 
@@ -130,81 +130,11 @@ mw.lexer( <span class="string">'Module:Test'</span> )
       [<span class="string">"type"</span>] = <span class="string">"comment"</span>,
     },
   },
-  {
-    {
-      [<span class="string">"data"</span>] = <span class="string">"function"</span>,
-      [<span class="string">"posFirst"</span>] = <span class="number">1</span>,
-      [<span class="string">"posLast"</span>] = <span class="number">8</span>,
-      [<span class="string">"type"</span>] = <span class="string">"keyword"</span>,
-    },
-    {
-      [<span class="string">"data"</span>] = <span class="string">" "</span>,
-      [<span class="string">"posFirst"</span>] = <span class="number">9</span>,
-      [<span class="string">"posLast"</span>] = <span class="number">9</span>,
-      [<span class="string">"type"</span>] = <span class="string">"whitespace"</span>,
-    },
-    {
-      [<span class="string">"data"</span>] = <span class="string">"foo"</span>,
-      [<span class="string">"posFirst"</span>] = <span class="number">10</span>,
-      [<span class="string">"posLast"</span>] = <span class="number">12</span>,
-      [<span class="string">"type"</span>] = <span class="string">"ident"</span>,
-    },
-    {
-      [<span class="string">"data"</span>] = <span class="string">"()"</span>,
-      [<span class="string">"posFirst"</span>] = <span class="number">13</span>,
-      [<span class="string">"posLast"</span>] = <span class="number">14</span>,
-      [<span class="string">"type"</span>] = <span class="string">"symbol"</span>,
-    },
-  },
-  {
-    {
-      [<span class="string">"data"</span>] = <span class="string">" "</span>,
-      [<span class="string">"posFirst"</span>] = <span class="number">1</span>,
-      [<span class="string">"posLast"</span>] = <span class="number">1</span>,
-      [<span class="string">"type"</span>] = <span class="string">"whitespace"</span>,
-    },
-    {
-      [<span class="string">"data"</span>] = <span class="string">"return"</span>,
-      [<span class="string">"posFirst"</span>] = <span class="number">2</span>,
-      [<span class="string">"posLast"</span>] = <span class="number">7</span>,
-      [<span class="string">"type"</span>] = <span class="string">"keyword"</span>,
-    },
-    {
-      [<span class="string">"data"</span>] = <span class="string">" "</span>,
-      [<span class="string">"posFirst"</span>] = <span class="number">8</span>,
-      [<span class="string">"posLast"</span>] = <span class="number">8</span>,
-      [<span class="string">"type"</span>] = <span class="string">"whitespace"</span>,
-    },
-    {
-      [<span class="string">"data"</span>] = <span class="string">"'"</span>,
-      [<span class="string">"posFirst"</span>] = <span class="number">9</span>,
-      [<span class="string">"posLast"</span>] = <span class="number">9</span>,
-      [<span class="string">"type"</span>] = <span class="string">"string_start"</span>,
-    },
-    {
-      [<span class="string">"data"</span>] = <span class="string">"bar"</span>,
-      [<span class="string">"posFirst"</span>] = <span class="number">10</span>,
-      [<span class="string">"posLast"</span>] = <span class="number">12</span>,
-      [<span class="string">"type"</span>] = <span class="string">"string"</span>,
-    },
-    {
-      [<span class="string">"data"</span>] = <span class="string">"'"</span>,
-      [<span class="string">"posFirst"</span>] = <span class="number">13</span>,
-      [<span class="string">"posLast"</span>] = <span class="number">13</span>,
-      [<span class="string">"type"</span>] = <span class="string">"string_end"</span>,
-    },
-  },
-  {
-    {
-      [<span class="string">"data"</span>] = <span class="string">"end"</span>,
-      [<span class="string">"posFirst"</span>] = <span class="number">1</span>,
-      [<span class="string">"posLast"</span>] = <span class="number">3</span>,
-      [<span class="string">"type"</span>] = <span class="string">"keyword"</span>,
-    },
-  },
 }
 </pre>
 
+
+<p>There are two other example modules provided for testing purposes; <code>Module:Test2</code> (or <a href="test2.lua">test2.lua</a>) and  <code>Module:Test3</code> (or <a href="test3.lua">test3.lua</a>). All test modules can be loaded as prepared pages.</p>
 
 
 </div> <!-- id="content" -->
