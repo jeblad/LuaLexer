@@ -1,7 +1,7 @@
 <!-- ![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg?style=for-the-badge) -->
 ![GitHub issues](https://img.shields.io/github/issues-raw/jeblad/LuaLexer?style=for-the-badge)
 
- ***NOTE***: *This is only in the preparation. The goal is to insert [LoganDark/lua-lexer](https://github.com/LoganDark/lua-lexer) and make it avaiulable.*
+ ***NOTE***: *This is only in the preparation. The goal is to insert [LoganDark/lua-lexer](https://github.com/LoganDark/lua-lexer) and make it available.*
 
 This [extension for Mediawiki](https://www.mediawiki.org/wiki/Extension:ModDoc) add a Lua lexer for modules provided by the [Scribunto extension](https://www.mediawiki.org/wiki/Extension:Scribunto). This makes it possible to build parse tree for Lua code, to facilitate further [lexical analysis](https://en.wikipedia.org/wiki/Lexical_analysis) in a collaborative environment.
 
